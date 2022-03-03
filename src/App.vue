@@ -11,7 +11,7 @@
             <spinner/>
 
             <div class="row">
-                <div v-for="el in characters" class="card mb-3" style="max-width: 540px;">
+                <div v-for="(el, idx) in characters" :key="el.id" class="card mb-3" style="max-width: 540px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img :src="el.thumbnail" class="img-fluid rounded-start" :alt="el.name">
@@ -19,7 +19,8 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">{{el.name}}</h5>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                @click="characterIndex = idx">
                           Подробнее
                         </button>
                       </div>
