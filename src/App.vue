@@ -5,14 +5,13 @@
 
         <div class="container">
             <h1 class="pt-3 pb-3">Персонажи Marvel</h1>
-            <pre>characters: {{characters}}</pre>
-
+            
             <app-modal/>
 
             <spinner/>
 
             <div class="row">
-                <div class="card mb-3" style="max-width: 540px;">
+                <div v-for="el in characters" class="card mb-3" style="max-width: 540px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <img src="https://vgtimes.ru/uploads/posts/2021-10/82020_1_1.jpg" class="img-fluid rounded-start" alt="...">
