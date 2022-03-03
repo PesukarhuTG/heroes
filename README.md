@@ -1,4 +1,4 @@
-# Marvel heroes
+# Marvel heroes [workshop task](https://github.com/netology-code/JSFREE-homeworks)
 * create layout, using Bootstrap
 * use Vue.js components
 * use [custom API](https://netology-api-marvel.herokuapp.com/characters)
