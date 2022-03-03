@@ -5,6 +5,7 @@
 
         <div class="container">
             <h1 class="pt-3 pb-3">Персонажи Marvel</h1>
+            <pre>characters: {{characters}}</pre>
 
             <app-modal/>
 
@@ -51,8 +52,19 @@
                 characterIndex: 0,
             }
         },
-        methods: {},
+        methods: {
+            fetchCharacters: function() {
+                return fetch('https://netology-api-marvel.herokuapp.com/characters')
+                    .then(res => res.json())
+                    .then(data => this.characters = data)
+            },
+
+        },
+
         computed: {},
+        mounted() {
+            this.fetchCharacters();
+          },
     }
 </script>
 
