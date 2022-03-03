@@ -6,7 +6,7 @@
         <div class="container">
             <h1 class="pt-3 pb-3">Персонажи Marvel</h1>
             
-            <app-modal/>
+            <app-modal :character="characters[characterIndex]" />
 
             <spinner/>
 

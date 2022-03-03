@@ -3,21 +3,17 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Человек-паук</h5>
+            <h5 class="modal-title" id="exampleModalLabel">{{character.name}}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <img src="https://vgtimes.ru/uploads/posts/2021-10/82020_1_1.jpg" class="img-fluid rounded-start" alt="poster">
+            <img :src="character.thumbnail" class="img-fluid rounded-start" :alt="character.name">
             <div>
               <h5>Описание</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto a tempore nobis possimus rerum
-                molestias, natus expedita quibusdam praesentium. Incidunt ullam reprehenderit in ut dolorem vitae illum
-                porro, laboriosam exercitationem.</p>
+              <p>{{character.description}}</p>
               <h5>Комиксы</h5>
               <ul>
-                <li>Adventures of Spider-Man (1996) #1</li>
-                <li>Adventures of Spider-Man (1996) #2</li>
-                <li>Adventures of Spider-Man (1996) #3</li>
+                <li v-for="el in character.comics">{{el.name}}</li>
               </ul>
             </div>
           </div>
@@ -32,6 +28,7 @@
 <script>
     export default {
         name: "AppModal",
+        props: ['character'],
     }
 </script>
 
