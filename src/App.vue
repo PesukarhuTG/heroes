@@ -1,17 +1,19 @@
 <template>
     <div id="app">
 
-        <app-header title="Marvel"/>
+        <app-header title="Marvel" :changeSearch="changeSearch" />
 
         <div class="container">
             <h1 class="pt-3 pb-3">Персонажи Marvel</h1>
 
-            <app-modal :character="characters[characterIndex]" />
+            <h5 v-if="!searchCharacters.length">К сожалению, по вашему запросу ' {{search}} ' ничего не найдено</h5>
+
+            <app-modal :character="searchCharacters[characterIndex]" />
 
             <spinner v-if="loading" />
 
             <div class="row">
-                <div v-for="(el, idx) in characters" 
+                <div v-for="(el, idx) in searchCharacters" 
                     class="card mb-3" 
                     :key="el.id" 
                     style="max-width: 540px;">
@@ -41,7 +43,6 @@
         </div>
 
     </div>
-
 </template>
 
 <script>
@@ -61,6 +62,7 @@
                 loading: false,
                 characters: [],
                 characterIndex: 0,
+                search: '',
             }
         },
         methods: {
@@ -69,9 +71,19 @@
               .then(res => res.json()) //то, что получим, преобразуется в json
               .then(data => this.characters = data) //нужно куда-то записать полученную информацию
           },
+          changeSearch: function(value) {
+            this.search = value
+          }
         },
-        computed: {},
-
+        //для предвариательной обработки данных
+        computed: {
+          searchCharacters: function() {
+            const {search, characters} = this
+            return characters.filter(item => {
+              return item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1
+            })
+          },
+        },
         //спец метод жизненного цикла, ктр-й срабатывает тогда, когда наш компонент оказался на странице
         async mounted(){
           this.loading = true
