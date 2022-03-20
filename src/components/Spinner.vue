@@ -1,12 +1,12 @@
 <template>
     <div class="text-center">
-        <div class="spinner-grow text-primary" role="status">
+        <div class="spinner-grow text-danger" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-        <div class="spinner-grow text-primary" role="status">
+        <div class="spinner-grow text-danger" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-        <div class="spinner-grow text-primary" role="status">
+        <div class="spinner-grow text-danger" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
@@ -19,5 +19,7 @@
 </script>
 
 <style scoped>
-
+  .spinner-grow {
+    margin: 0 10px;
+  }
 </style>
